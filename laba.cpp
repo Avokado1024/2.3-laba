@@ -4,39 +4,39 @@ using namespace std;
 
 class Circle {
 protected:
-    double radius;
+    double r;
 
 public:
-    Circle(double radius)
+    Circle(double r)
     {
-        this->radius = radius;
+        this->r = r;
     }
 
-    double calculateArea()
+    double Area()
     {
-        double d = 3.14 * pow(radius, 2);
+        double d = 3.14 * pow(r, 2);
         return d;
     }
 
     virtual void print()
     {
-        cout << "Radius: " << radius << endl;
-        cout << "Area: " << calculateArea() << endl;
+        cout << "Radius: " << r << endl;
+        cout << "Area: " << Area() << endl;
     }
 };
 
 class Sphere : public Circle
 {
 public:
-    Sphere(double radius) : Circle(radius) {}
+    Sphere(double r) : Circle(r) {}
 
-    double calculateVolume() {
+    double Volume() {
         double z = 4.0 / 3.0;
-        return radius * Circle::calculateArea() * (z);
+        return r * Circle::Area() * (z);
     }
 
     virtual void print() {
-        cout << "Volume: " << calculateVolume() << endl;
+        cout << "Volume: " << Volume() << endl;
     }
 };
 
@@ -45,9 +45,9 @@ int main() {
     Sphere sphere(5);
     circle.print();
     sphere.print();
-    Circle* circlePtr = new Circle(3);
+    Circle* circlePtr = new Circle(10);
     circlePtr->print();
-    Sphere* spherePtr = new Sphere(3);
+    Sphere* spherePtr = new Sphere(10);
     spherePtr->print();
 
     return 0;
